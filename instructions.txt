@@ -1,0 +1,55 @@
+🧱 Level 1: Components & JSX
+Goal: Understand how to break the UI into components and write clean JSX.
+
+✅ Create a ProfileCard that displays your name, picture, and a short bio.
+
+✅ Split ProfileCard into Header, Avatar, and Bio components.
+
+✅ Create a ContactInfo component with hardcoded phone, email, and location.
+
+✅ Combine everything in an App component that renders ProfileCard and ContactInfo.
+
+🧠 Level 2: State Practice
+Goal: Get comfortable using useState and updating values.
+
+✅ Create a Counter with increment/decrement buttons.
+
+✅ Make a Toggle button that shows/hides a paragraph.
+
+✅ Build a "like button" that toggles between liked/unliked state.
+
+✅ Add a button that changes the background color each time it’s clicked.
+
+📝 Level 3: Forms & Input Handling
+Goal: Learn how to manage controlled inputs and form submission.
+
+✅ Create a form that accepts name + email and displays them on submit.
+
+✅ Add basic validation: show an alert if fields are empty.
+
+✅ Add an "Edit" button that turns display values back into inputs.
+
+✅ Keep submitted values in state so they persist when editing.
+
+♻️ Level 4: Props & Reusable Components
+Goal: Use props to make components dynamic and modular.
+
+✅ Create a Skill component and render a list of 3–5 skills using .map().
+
+✅ Pass skill data as props to each Skill component.
+
+✅ Add a Delete button to remove a skill from the list.
+
+✅ Create a JobExperience component and render two jobs with props.
+
+🧩 Level 5: Section Management
+Goal: Practice combining forms, state, and components like in the CV app.
+
+✅ Build a GeneralInfoForm with name/email/phone inputs and a submit button.
+
+✅ On submit, show the info in a readable format and hide the form.
+
+✅ Add an “Edit” button to bring the form back with pre-filled values.
+
+✅ Repeat this flow for a new EducationForm component.
+
