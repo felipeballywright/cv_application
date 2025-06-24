@@ -2,14 +2,30 @@ import { useState } from 'react'
 import './App.css'
 
 // 🧱 Level 1: Components & JSX ✅
+// 🧠 Level 2: State Practice ✅
 
-// 🧠 Level 2: State Practice
-// Goal: Get comfortable using useState and updating values.
-// ✅ Create a Counter with increment/decrement buttons.
-// ✅ Make a Toggle button that shows/hides a paragraph.
-// ✅ Build a "like button" that toggles between liked/unliked state.
-// ✅ Add a button that changes the background color each time it’s clicked.
+// 📝 Level 3: Forms & Input Handling
+// Goal: Learn how to manage controlled inputs and form submission.
+// ✅ Create a form that accepts name + email and displays them on submit.
+// ✅ Add basic validation: show an alert if fields are empty.
+// ✅ Add an "Edit" button that turns display values back into inputs.
+// ✅ Keep submitted values in state so they persist when editing.
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// FINISHED EXERCISES:
 
 function ProfileCard({name, avatar, bio}){
   return(
@@ -36,7 +52,7 @@ function ContactInfo({phone, email, location}){
   )
 }
 
-export function App(){
+export function CarlitosProfile(){
   console.log("Running App!");
   const name = "Carlitos Balá";
   const imgSource = "src/images/Carlitos-bala.png";
@@ -49,6 +65,28 @@ export function App(){
     <div id='main-container'>
       <ProfileCard name={name} avatar={imgSource} bio={bio}></ProfileCard>
       <ContactInfo phone={phone} email={email} location={location}></ContactInfo>
+    </div>
+  )
+}
+
+export function Counter(){
+  const [counter, setCounter] = useState(0);
+
+  function increaseCount(){
+    setCounter(prev => prev + 1);
+  }
+
+   function decreaseCount(){
+    setCounter(prev => prev - 1);
+  }
+
+  return( 
+    <div className='app-container'>
+      <h2>{counter}</h2>
+      <div className='button-container'>
+        <button className='counter-button' onClick={decreaseCount}>Decrease</button>
+        <button className='counter-button' onClick={increaseCount}>Increase</button>
+       </div>
     </div>
   )
 }
