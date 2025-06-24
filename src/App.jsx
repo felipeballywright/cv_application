@@ -1,41 +1,55 @@
 import { useState } from 'react'
 import './App.css'
 
-// 🧱 Level 1: Components & JSX
-// Goal: Understand how to break the UI into components and write clean JSX.
-// ✅ Create a ProfileCard that displays your name, picture, and a short bio.
-// ✅ Split ProfileCard into Header, Avatar, and Bio components.
-// ✅ Create a ContactInfo component with hardcoded phone, email, and location.
-// ✅ Combine everything in an App component that renders ProfileCard and ContactInfo.
+// 🧱 Level 1: Components & JSX ✅
 
-// 🔜 Suggestions for Next Steps (No Code):
-// Break it into smaller components
-// Turn Header, Avatar, and Bio into their own files so the App stays clean and compositional.
-
-// Use props instead of hardcoded data
-// Let each component receive its content via props so you can reuse them for other people later.
-
-// Add a style sheet
-// Try giving each section some basic styling in a card.css or App.css file. Focus on layout, spacing, and font sizing.
+// 🧠 Level 2: State Practice
+// Goal: Get comfortable using useState and updating values.
+// ✅ Create a Counter with increment/decrement buttons.
+// ✅ Make a Toggle button that shows/hides a paragraph.
+// ✅ Build a "like button" that toggles between liked/unliked state.
+// ✅ Add a button that changes the background color each time it’s clicked.
 
 
-
-
-export default function App(){
+function ProfileCard({name, avatar, bio}){
   return(
     <div className='card'>
-      <div className='header'>
-        <h2>Carlitos Bala</h2>
-      </div>
-      <div className='avatar'>
-        <img src="src/images/Carlitos-bala.png" alt="" />
-      </div>
-      <div className='bio'>
-        <p>
-          Carlos Salim Balaá (Buenos Aires, 13 de agosto de 1925-Buenos Aires, 22 de septiembre de 2022),[1]​ conocido popularmente como Carlitos Balá, fue un humorista, actor, músico y presentador argentino. 
-          Con más de sesenta años de trayectoria artística, en su mayoría dedicada al show infantil, realizó espectáculos en radio, televisión, cine, circo y teatro.
-        </p>
-      </div>
+      <h2 className='header'>{name}</h2>
+      <img className='avatar' src={avatar} alt="" />
+      <p className='basic-text'>
+        {bio}
+      </p>
     </div>
   )
 }
+
+function ContactInfo({phone, email, location}){
+  return(
+    <div className='card'>
+      <p className='bold-text'>Phone:</p>
+      <p className='basic-text'>{phone}</p>
+      <p className='bold-text'>Email:</p>
+      <p className='basic-text'>{email}</p>
+      <p className='bold-text'>Location:</p>
+      <p className='basic-text'>{location}</p>
+    </div>
+  )
+}
+
+export function App(){
+  console.log("Running App!");
+  const name = "Carlitos Balá";
+  const imgSource = "src/images/Carlitos-bala.png";
+  const bio = "Carlos Salim Balaá (Buenos Aires, 13 de agosto de 1925-Buenos Aires, 22 de septiembre de 2022),​ conocido popularmente como Carlitos Balá, fue un humorista, actor, músico y presentador argentino.";
+  const phone = "11 1234 1234";
+  const email = "carlitosbala@gmail.com";
+  const location = "Buenos Aires, Argentina";
+
+  return (
+    <div id='main-container'>
+      <ProfileCard name={name} avatar={imgSource} bio={bio}></ProfileCard>
+      <ContactInfo phone={phone} email={email} location={location}></ContactInfo>
+    </div>
+  )
+}
+
