@@ -12,7 +12,24 @@ import './App.css'
 // ✅ Keep submitted values in state so they persist when editing.
 
 
+export function App(){
+  function handleSubmit(event){
+    event.preventDefault()
+  }
 
+  return(
+    <div className='app-container'>
+      <h2>Form</h2>
+      <form className='info-form' onSubmit={handleSubmit}>
+        <label for='name-input' className='info-label'>Name</label>
+        <input id='name-input' className='info-input' type='text'></input>
+        <label for='email-input' className='info-label'>Email</label>
+        <input id='email-input' className='info-input'></input>
+        <button type='submit'>Submit</button>
+      </form>
+    </div>
+  )
+}
 
 
 

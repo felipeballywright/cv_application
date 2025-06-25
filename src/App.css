@@ -17,49 +17,25 @@ body {
   justify-content: center;
 }
 
-#main-container{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-color: rgb(102, 87, 155);
-  border: 0.1rem solid black;
-  border-radius: 2rem;
-  padding: 2rem;
-  max-width: 80%;
+#root{
+  width: 100%;
+  height: 100%;
+}
+
+.app-container{
   margin: auto;
+  padding: 0 40%;
 }
 
-.card{
+.info-form{
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  max-width: 90%;
-  background-color: rgb(33, 28, 51);
-  border: 0.1rem solid black;
+  background-color: rgb(7, 0, 44);
+  padding: 5% 7%;
+  border: 0.1rem solid white;
   border-radius: 2rem;
-  padding: 1rem 5rem;
-  text-align: center;
-  margin-bottom: 1.5rem;
 }
 
-.card:last-child{
-  margin-bottom: 0;
-}
-
-.card *{
-  padding: 0.5rem 0;
-}
-
-.avatar{
-  max-width: 100%;
-}
-
-.bold-text{
-  font-weight: 800;
-}
-
-.basic-text{
-  margin: center;
+.info-input{
+  margin: 0.1rem 0 1.5rem 0;
 }
