@@ -11,24 +11,60 @@ import './App.css'
 // ✅ Add an "Edit" button that turns display values back into inputs.
 // ✅ Keep submitted values in state so they persist when editing.
 
+// ISSUE: IT ALWAYS THROWS AN ALERT SAYING THE INPUTS ARE EMPTY. 
+// PROBABLY BECAUSE THE STATE USED TO CHECK THIS IS APPLIED TO THE INPUTS INSIDE INITIALRENDER
+// (EVEN BEFORE THE USER SEES THEM)
 
 export function App(){
-  function handleSubmit(event){
-    event.preventDefault()
-  }
-
-  return(
+  const initialRender = (
     <div className='app-container'>
       <h2>Form</h2>
       <form className='info-form' onSubmit={handleSubmit}>
-        <label for='name-input' className='info-label'>Name</label>
-        <input id='name-input' className='info-input' type='text'></input>
-        <label for='email-input' className='info-label'>Email</label>
-        <input id='email-input' className='info-input'></input>
+        <label htmlFor='name-input' className='info-label'>Name</label>
+        <input onChange={(event) => updateName(event.target.value)} id='name-input' className='info-input' type='text'></input>
+        <label htmlFor='email-input' className='info-label'>Email</label>
+        <input onChange={(event) => updateEmail(event.target.value)} id='email-input' className='info-input'></input>
         <button type='submit'>Submit</button>
       </form>
     </div>
   )
+
+  const [nameInput, setNameInput] = useState("");
+  const [emailInput, setEmailInput] = useState("");
+
+  function updateName(newValue){
+    setNameInput(newValue);
+  }
+
+  function updateEmail(newValue){
+    setEmailInput(newValue);
+  }
+
+  const [appRender, setAppRender] = useState(initialRender);
+  
+  function updateRender(){
+    const newRender = <p>Hey there!</p>
+    setAppRender(newRender);
+  }
+
+  function handleSubmit(event){
+    event.preventDefault()
+
+    if(nameInput === "" && emailInput === ""){
+      alert("Both inputs are empty");
+      return
+    } else if(nameInput === ""){
+      alert("Name input is empty");
+      return
+    } else if(emailInput === ""){
+      alert("Email input is empty");
+      return
+    }
+
+    updateRender()
+  }
+
+  return appRender;
 }
 
 
