@@ -1,9 +1,6 @@
 import { useState } from 'react'
 import './App.css'
 
-// 🧱 Level 1: Components & JSX ✅
-// 🧠 Level 2: State Practice ✅
-
 // 📝 Level 3: Forms & Input Handling
 // Goal: Learn how to manage controlled inputs and form submission.
 // ✅ Create a form that accepts name + email and displays them on submit.
@@ -11,74 +8,74 @@ import './App.css'
 // ✅ Add an "Edit" button that turns display values back into inputs.
 // ✅ Keep submitted values in state so they persist when editing.
 
-// ISSUE: IT ALWAYS THROWS AN ALERT SAYING THE INPUTS ARE EMPTY. 
-// PROBABLY BECAUSE THE STATE USED TO CHECK THIS IS APPLIED TO THE INPUTS INSIDE INITIALRENDER
-// (EVEN BEFORE THE USER SEES THEM)
+// READ AND MAKE SURE THAT YOU UNDERSTAND THE CORRECTION!
 
-export function App(){
-  const initialRender = (
-    <div className='app-container'>
-      <h2>Form</h2>
-      <form className='info-form' onSubmit={handleSubmit}>
-        <label htmlFor='name-input' className='info-label'>Name</label>
-        <input onChange={(event) => updateName(event.target.value)} id='name-input' className='info-input' type='text'></input>
-        <label htmlFor='email-input' className='info-label'>Email</label>
-        <input onChange={(event) => updateEmail(event.target.value)} id='email-input' className='info-input'></input>
-        <button type='submit'>Submit</button>
-      </form>
-    </div>
-  )
 
+export function App() {
   const [nameInput, setNameInput] = useState("");
   const [emailInput, setEmailInput] = useState("");
+  const [submitted, setSubmitted] = useState(false);
 
-  function updateName(newValue){
+  function updateName(newValue) {
     setNameInput(newValue);
   }
 
-  function updateEmail(newValue){
+  function updateEmail(newValue) {
     setEmailInput(newValue);
   }
 
-  const [appRender, setAppRender] = useState(initialRender);
-  
-  function updateRender(){
-    const newRender = <p>Hey there!</p>
-    setAppRender(newRender);
-  }
+  function handleSubmit(event) {
+    event.preventDefault();
 
-  function handleSubmit(event){
-    event.preventDefault()
-
-    if(nameInput === "" && emailInput === ""){
+    if (nameInput === "" && emailInput === "") {
       alert("Both inputs are empty");
-      return
-    } else if(nameInput === ""){
+      return;
+    } else if (nameInput === "") {
       alert("Name input is empty");
-      return
-    } else if(emailInput === ""){
+      return;
+    } else if (emailInput === "") {
       alert("Email input is empty");
-      return
+      return;
     }
 
-    updateRender()
+    setSubmitted(true);
   }
 
-  return appRender;
+  if (submitted) {
+    return <p>Hey there!</p>;
+  }
+
+  return (
+    <div className="app-container">
+      <h2>Form</h2>
+      <form className="info-form" onSubmit={handleSubmit}>
+        <label htmlFor="name-input" className="info-label">
+          Name
+        </label>
+        <input
+          onChange={(event) => updateName(event.target.value)}
+          id="name-input"
+          className="info-input"
+          type="text"
+        />
+        <label htmlFor="email-input" className="info-label">
+          Email
+        </label>
+        <input
+          onChange={(event) => updateEmail(event.target.value)}
+          id="email-input"
+          className="info-input"
+        />
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  );
 }
 
-
-
-
-
-
-
-
-
-
-
-
 // FINISHED EXERCISES:
+
+// 🧱 Level 1: Components & JSX ✅
+// 🧠 Level 2: State Practice ✅
 
 function ProfileCard({name, avatar, bio}){
   return(
