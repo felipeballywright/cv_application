@@ -3,9 +3,9 @@ import './App.css'
 
 // ♻️ Level 4: Props & Reusable Components
 // Goal: Use props to make components dynamic and modular.
-// Create a Skill component and render a list of 3–5 skills using .map().
-// Pass skill data as props to each Skill component.
-// Add a Delete button to remove a skill from the list.
+// Create a Skill component and render a list of 3–5 skills using .map(). ✅
+// Pass skill data as props to each Skill component. ✅
+// Add a Delete button to remove a skill from the list. 
 // Create a JobExperience component and render two jobs with props.
 
 export const skillsArr = [
@@ -21,9 +21,29 @@ export const skillsArr = [
 ]
 
 export function App({ arr }){
-  const filteredArr = arr?.filter(el => el.type === "SoftSkill") || [];
-  console.log(filteredArr);
-  return null;
+  const filteredArr = arr?.filter(el => el.type === "Tech Skills") || [];
+  // console.log(filteredArr);
+
+  function renderList(){
+    const listArr = [];
+
+    for(let i = 0; i < filteredArr.length; i++){
+      listArr.push(
+        <li className='list-element' key={filteredArr[i].name}>
+          <h2>{filteredArr[i].name}</h2>
+          <p>{filteredArr[i].type}</p>
+        </li>
+      );
+    }
+
+    return listArr;
+  }
+
+  return(
+    <ul id='list-container'>
+      {renderList()}
+    </ul>
+  )
 }
 
 
