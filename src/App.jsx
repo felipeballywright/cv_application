@@ -1,76 +1,40 @@
 import { useState } from 'react'
 import './App.css'
 
-// 📝 Level 3: Forms & Input Handling
-// Goal: Learn how to manage controlled inputs and form submission.
-// ✅ Create a form that accepts name + email and displays them on submit.
-// ✅ Add basic validation: show an alert if fields are empty.
-// ✅ Add an "Edit" button that turns display values back into inputs.
-// ✅ Keep submitted values in state so they persist when editing.
+// ♻️ Level 4: Props & Reusable Components
+// Goal: Use props to make components dynamic and modular.
+// Create a Skill component and render a list of 3–5 skills using .map().
+// Pass skill data as props to each Skill component.
+// Add a Delete button to remove a skill from the list.
+// Create a JobExperience component and render two jobs with props.
 
-// READ AND MAKE SURE THAT YOU UNDERSTAND THE CORRECTION!
+export const skillsArr = [
+  {name: "Communication", type: "SoftSkill"},
+  {name: "Problem-solving", type: "SoftSkill"},
+  {name: "Time management", type: "SoftSkill"},
+  {name: "JavaScript", type: "Tech Skills"},
+  {name: "React", type: "Tech Skills"},
+  {name: "HTML/CSS", type: "Tech Skills"},
+  {name: "Drawing", type: "Creative Skills"},
+  {name: "Photography", type: "Creative Skills"},
+  {name: "Graphic design", type: "Creative Skills"}
+]
 
-
-export function App() {
-  const [nameInput, setNameInput] = useState("");
-  const [emailInput, setEmailInput] = useState("");
-  const [submitted, setSubmitted] = useState(false);
-
-  function updateName(newValue) {
-    setNameInput(newValue);
-  }
-
-  function updateEmail(newValue) {
-    setEmailInput(newValue);
-  }
-
-  function handleSubmit(event) {
-    event.preventDefault();
-
-    if (nameInput === "" && emailInput === "") {
-      alert("Both inputs are empty");
-      return;
-    } else if (nameInput === "") {
-      alert("Name input is empty");
-      return;
-    } else if (emailInput === "") {
-      alert("Email input is empty");
-      return;
-    }
-
-    setSubmitted(true);
-  }
-
-  if (submitted) {
-    return <p>Hey there!</p>;
-  }
-
-  return (
-    <div className="app-container">
-      <h2>Form</h2>
-      <form className="info-form" onSubmit={handleSubmit}>
-        <label htmlFor="name-input" className="info-label">
-          Name
-        </label>
-        <input
-          onChange={(event) => updateName(event.target.value)}
-          id="name-input"
-          className="info-input"
-          type="text"
-        />
-        <label htmlFor="email-input" className="info-label">
-          Email
-        </label>
-        <input
-          onChange={(event) => updateEmail(event.target.value)}
-          id="email-input"
-          className="info-input"
-        />
-        <button type="submit">Submit</button>
-      </form>
-    </div>
-  );
+export function App({ arr }){
+  const filteredArr = arr?.filter(el => el.type === "SoftSkill") || [];
+  console.log(filteredArr);
+  return null;
 }
+
+
+
+
+
+
+
+
+
+
 
 // FINISHED EXERCISES:
 
@@ -141,3 +105,63 @@ export function Counter(){
   )
 }
 
+export function FormCv() {
+  const [nameInput, setNameInput] = useState("");
+  const [emailInput, setEmailInput] = useState("");
+  const [submitted, setSubmitted] = useState(false);
+
+  function updateName(newValue) {
+    setNameInput(newValue);
+  }
+
+  function updateEmail(newValue) {
+    setEmailInput(newValue);
+  }
+
+  function handleSubmit(event) {
+    event.preventDefault();
+
+    if (nameInput === "" && emailInput === "") {
+      alert("Both inputs are empty");
+      return;
+    } else if (nameInput === "") {
+      alert("Name input is empty");
+      return;
+    } else if (emailInput === "") {
+      alert("Email input is empty");
+      return;
+    }
+
+    setSubmitted(true);
+  }
+
+  if (submitted) {
+    return <p>Hey there!</p>;
+  }
+
+  return (
+    <div className="app-container">
+      <h2>Form</h2>
+      <form className="info-form" onSubmit={handleSubmit}>
+        <label htmlFor="name-input" className="info-label">
+          Name
+        </label>
+        <input
+          onChange={(event) => updateName(event.target.value)}
+          id="name-input"
+          className="info-input"
+          type="text"
+        />
+        <label htmlFor="email-input" className="info-label">
+          Email
+        </label>
+        <input
+          onChange={(event) => updateEmail(event.target.value)}
+          id="email-input"
+          className="info-input"
+        />
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  );
+}
