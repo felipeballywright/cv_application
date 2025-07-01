@@ -1,50 +1,13 @@
 import { useState } from 'react'
 import './App.css'
 
-// ♻️ Level 4: Props & Reusable Components
-// Goal: Use props to make components dynamic and modular.
-// Create a Skill component and render a list of 3–5 skills using .map(). ✅
-// Pass skill data as props to each Skill component. ✅
-// Add a Delete button to remove a skill from the list. 
-// Create a JobExperience component and render two jobs with props.
+// 🧩 Level 5: Section Management
+// Goal: Practice combining forms, state and components.
+// Build a GeneralInfoForm with name/email/phone inputs and a submit button.
+// On submit, show the info in a readable format and hide the form.
+// Add an “Edit” button to bring the form back with pre-filled values.
+// Repeat this flow for a new EducationForm component.
 
-export const skillsArr = [
-  {name: "Communication", type: "SoftSkill"},
-  {name: "Problem-solving", type: "SoftSkill"},
-  {name: "Time management", type: "SoftSkill"},
-  {name: "JavaScript", type: "Tech Skills"},
-  {name: "React", type: "Tech Skills"},
-  {name: "HTML/CSS", type: "Tech Skills"},
-  {name: "Drawing", type: "Creative Skills"},
-  {name: "Photography", type: "Creative Skills"},
-  {name: "Graphic design", type: "Creative Skills"}
-]
-
-export function App({ arr }){
-  const filteredArr = arr?.filter(el => el.type === "Tech Skills") || [];
-  // console.log(filteredArr);
-
-  function renderList(){
-    const listArr = [];
-
-    for(let i = 0; i < filteredArr.length; i++){
-      listArr.push(
-        <li className='list-element' key={filteredArr[i].name}>
-          <h2>{filteredArr[i].name}</h2>
-          <p>{filteredArr[i].type}</p>
-        </li>
-      );
-    }
-
-    return listArr;
-  }
-
-  return(
-    <ul id='list-container'>
-      {renderList()}
-    </ul>
-  )
-}
 
 
 
@@ -60,6 +23,7 @@ export function App({ arr }){
 
 // 🧱 Level 1: Components & JSX ✅
 // 🧠 Level 2: State Practice ✅
+// ♻️ Level 4: Props & Reusable Components ✅
 
 function ProfileCard({name, avatar, bio}){
   return(
@@ -184,4 +148,51 @@ export function FormCv() {
       </form>
     </div>
   );
+}
+
+const skillsArr = [
+  { name: "Communication", type: "SoftSkill", id: crypto.randomUUID()},
+  { name: "Problem-solving", type: "SoftSkill" , id:crypto.randomUUID()},
+  { name: "Time management", type: "SoftSkill" , id:crypto.randomUUID()},
+  { name: "JavaScript", type: "Tech Skills" , id:crypto.randomUUID()},
+  { name: "React", type: "Tech Skills" , id:crypto.randomUUID()},
+  { name: "HTML/CSS", type: "Tech Skills" , id:crypto.randomUUID()},
+  { name: "Drawing", type: "Creative Skills" , id:crypto.randomUUID()},
+  { name: "Photography", type: "Creative Skills" , id:crypto.randomUUID()},
+  { name: "Graphic design", type: "Creative Skills" , id:crypto.randomUUID()}
+]
+
+function Skill({name, type, id, onDelete}){
+  return(
+    <li id='id'>
+      <h2>{name}</h2>
+      <p>{type}</p>
+      <button onClick={() => onDelete(id)}>Delete</button>
+    </li>
+  )
+}
+
+export function SkillsApp(){
+  const [skillsArrCopy, setSkillsArrCopy] = useState(
+    skillsArr?.filter(el => el.type === "Tech Skills") || []
+  );
+
+
+  function handleDelete(id){
+    setSkillsArrCopy(prev => prev.filter(skill => skill.id !== id));
+  }
+
+  return(
+    <ul id='list-container'>
+      {skillsArrCopy.map(skill => (
+        <Skill
+          name={skill.name}
+          type={skill.type}
+          id={skill.id}
+          key={skill.id}
+          onDelete={handleDelete}
+        />
+      ))}
+    </ul>
+  )
 }
