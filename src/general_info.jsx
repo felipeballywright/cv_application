@@ -22,7 +22,11 @@ export function GeneralInfoForm(){
     const [isSubmitted, setIsSubmitted] = useState(false);
 
     function handleSubmit(){
-        setIsSubmitted(true);
+        if(!isSubmitted){
+            setIsSubmitted(true);
+        } else if(isSubmitted){
+            setIsSubmitted(false);
+        }
     }
 
     function handleName(event){
@@ -39,21 +43,24 @@ export function GeneralInfoForm(){
 
     if(isSubmitted){
         return(
-            <GeneralInfo
+            <>
+              <GeneralInfo
                 name={nameInput}
                 email={emailInput}
                 phone={phoneInput}
-            />
+              />
+              <button onClick={handleSubmit}>Edit</button>
+            </>
         )
     }
 
     return(
         <form onSubmit={handleSubmit}>
-            <label forHtml="name-input">Name</label>
+            <label htmlFor="name-input">Name</label>
             <input onChange={handleName} id="name-input" value={nameInput}></input>
-            <label forHtml="email-input">Email</label>
+            <label htmlFor="email-input">Email</label>
             <input onChange={handleEmail} id="email-input" value={emailInput}></input>
-            <label forHtml="phone-input">Phone</label>
+            <label htmlFor="phone-input">Phone</label>
             <input onChange={handlePhone} id="phone-input" value={phoneInput}></input>
             <button>Submit</button>
         </form>
