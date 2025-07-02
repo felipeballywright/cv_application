@@ -22,24 +22,3 @@ body {
   height: 100%;
 }
 
-.app-container{
-  margin: auto;
-  padding: 0 40%;
-}
-
-.info-form{
-  display: flex;
-  flex-direction: column;
-  background-color: rgb(7, 0, 44);
-  padding: 5% 7%;
-  border: 0.1rem solid white;
-  border-radius: 2rem;
-}
-
-.info-input{
-  margin: 0.1rem 0 1.5rem 0;
-}
-
-.list-element{
-  border: 0.1rem solid black;
-}
