@@ -1,5 +1,10 @@
 import { useState } from "react";
 
+// MAKE A RENDER ARRAY WITH ALL OF THE SECTIONS
+// THE FUNCTIONALITY SHOULD ADD THEM AND DELETE THEM FROM THE ARRAY
+// THEN AT THE END OF THE FUNCTION MAP AND RETURN THIS ARRAY (FOR IT TO BE RENDERED)
+// DON'T TRY TO MODIFY THE RENDER ITSELD, WORK ON THE ARRAY (SO YOU CAN USE ITERATION AND OTHER TOOLS)
+
 function Education({title, school, date}){
     return(
         <div className="basic-container">
@@ -7,7 +12,6 @@ function Education({title, school, date}){
             <p className="bold-text">{school}</p>
             <p>{date}</p>
         </div>
-
     )
 }
 
@@ -64,21 +68,33 @@ function EducationForm(){
 }
 
 export function EducationRender(){
-    const [render, setRender] = useState(<EducationForm></EducationForm>);
+    const [render, setRender] = useState([
+        <div id={crypto.randomUUID()}>
+            <EducationForm></EducationForm>
+            <button onClick={deleteSection}>Delete</button>
+        </div>
+    ]);
 
     function addSection(){
-        setRender(
-            <>
-                {render}
+        setRender(render.push(
+            <div id={crypto.randomUUID()}>
                 <EducationForm></EducationForm>
-            </>
-        );
+                <button onClick={deleteSection}>Delete</button>
+            </div>
+        ));
+    }
+
+    function deleteSection(event){
+        // console.log("deleteSection says:", event.target.parentElement.id);
+        for (let index = 0; index < render.length; index++) {
+               
+        }
     }
 
     return(
-        <>
+        <div>
             {render}
             <button onClick={addSection}>Add Section</button>
-        </>
+        </div>
     )
 }
