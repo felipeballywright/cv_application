@@ -1,11 +1,11 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
-import { HandleEducation } from './education'
+import { EducationRender } from './education'
 
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <HandleEducation></HandleEducation>
+    <EducationRender></EducationRender>
   </StrictMode>,
 )
