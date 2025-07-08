@@ -1,19 +1,18 @@
 import { useState } from "react";
 
-// READ THE CODE, MAKE SURE YOU FULLY UNDERSTAND IT 
-
-function Education({title, school, date, handleSubmit}){
+function Education({title, school, date, handleSubmit, handleDelete}){
     return(
         <div className="basic-container">
             <h2>{title}</h2>
             <p className="bold-text">{school}</p>
             <p>{date}</p>
             <button onClick={handleSubmit}>Edit</button>
+            <button onClick={handleDelete}>Delete</button>
         </div>
     )
 }
 
-function EducationForm({title, school, date, onTitleChange, onSchoolChange, onDateChange, handleSubmit}){
+function EducationForm({title, school, date, onTitleChange, onSchoolChange, onDateChange, handleSubmit, handleDelete}){
     return(
         <form onSubmit={handleSubmit}>
             <label htmlFor="title-input">Title</label>
@@ -26,6 +25,7 @@ function EducationForm({title, school, date, onTitleChange, onSchoolChange, onDa
             <input id="date-input" value={date} onChange={onDateChange}></input>
 
             <button>Submit</button>
+            <button onClick={handleDelete}>Delete</button>
         </form>
     )
 }
@@ -87,6 +87,17 @@ export function EducationRender(){
         })
     }
 
+    function handleDelete(id){
+        console.log("ID is", id);
+        console.log("Before", sections);
+
+        setSections([ ...sections ].filter(section => 
+            section.id !== id
+        ))
+
+        console.log("After", sections);
+    }
+
     return(
         <div>
             {sections.map((section) => {
@@ -97,6 +108,7 @@ export function EducationRender(){
                         school={section.school} 
                         date={section.date}
                         handleSubmit={(e) => {handleSubmit(e, section.id)}}
+                        handleDelete={() => {handleDelete(section.id)}}
                     />
                 } else{
                     return <EducationForm 
@@ -108,6 +120,7 @@ export function EducationRender(){
                         onSchoolChange={(e) => {onSchoolChange(e.target.value, section.id)}}
                         onDateChange={(e) => {onDateChange(e.target.value, section.id)}}
                         handleSubmit={(e) => {handleSubmit(e, section.id)}}
+                        handleDelete={() => {handleDelete(section.id)}}
                     />
                 }
             })}
