@@ -30,7 +30,7 @@ function EducationForm({title, school, date, onTitleChange, onSchoolChange, onDa
     )
 }
 
-export function EducationRender(){
+function EducationRender(){
     const [sections, setSections] = useState([
         {id: crypto.randomUUID(), title: "", school: "", date: "", isSubmitted: false}
     ]);
