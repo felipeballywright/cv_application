@@ -13,23 +13,23 @@ function Experience({company, position, respons, date, handleSubmit, handleDelet
     )
 }
 
-function ExperienceForm({company, position, respons, date, onCompanyChange, onPositionChange, onResponsChange, onDateChange, handleSubmit, handleDelete}){
+function ExperienceForm({company, position, respons, date, onCompanyChange, onPositionChange, onResponsChange, onDateChange, handleSubmit, handleDelete, isHidden}){
     return(
-        <form>
-            <label for="company-input">Company</label>
+        <form onSubmit={handleSubmit}>
+            <label htmlFor="company-input">Company</label>
             <input id="company-input" value={company} onChange={onCompanyChange}></input>
         
-            <label for="position-input">Position</label>
+            <label htmlFor="position-input">Position</label>
             <input id="position-input" value={position} onChange={onPositionChange}></input>
 
-            <label for="respons-input">Responsabilities</label>
+            <label htmlFor="respons-input">Responsabilities</label>
             <input id="respons-input" value={respons} onChange={onResponsChange}></input>
 
-            <label for="date-input">Date</label>
+            <label htmlFor="date-input">Date</label>
             <input id="date-input" value={date} onChange={onDateChange}></input>
 
-            <button onClick={handleSubmit}>Submit</button>
-            <button onClick={handleDelete}>Delete</button>
+            <button>Submit</button>
+            <button onClick={handleDelete} style={isHidden}>Delete</button>
         </form>
     )
 }
@@ -87,13 +87,38 @@ export function ExperienceRender(){
         }))
     }
 
+    function handleAddSection(){
+        const emptyObj = { id: crypto.randomUUID(), company: "", position: "", respons: "", date: "", isSubmitted: false };
+        
+        if(sections[sections.length - 1].isSubmitted){
+            setSections(prev => {
+                return[
+                    ...prev,
+                    emptyObj
+                ]
+            })
+        } else{
+            alert("Please submit the last section before adding a new one.");
+        }
+    }
 
-    // WORK ON THIS FUNCTION!
-    // function handleAddSection(){
-    //     setSections(prev => prev)
-    //     })
-    // }
+    function handleDelete(e, id){
+        e.preventDefault();
 
+        if(sections.length > 1){
+            setSections([ ...sections ].filter(section => 
+            section.id !== id
+            ))
+        }      
+    }
+
+    // WORK ON THIS
+
+    function isHidden(id){
+        if(sections[0].id === id){
+            return none;
+        }
+    }
 
     return(
         <div>
@@ -107,7 +132,7 @@ export function ExperienceRender(){
                         respons={section.respons}
                         date={section.date}
                         handleSubmit={(e) => {handleSubmit(e, section.id)}}
-                        handleDelete={() => {handleDelete(section.id)}}
+                        handleDelete={(e) => {handleDelete(e, section.id)}}
                     />
                 )
             } else if(!section.isSubmitted){
@@ -123,6 +148,8 @@ export function ExperienceRender(){
                         onResponsChange={(e) => {onResponsChange(e.target.value, section.id)}}
                         onDateChange={(e) => {onDateChange(e.target.value, section.id)}}
                         handleSubmit={(e) => {handleSubmit(e, section.id)}}
+                        handleDelete={(e) => {handleDelete(e, section.id)}}
+                        display={() => {return isHidden(section.id)}}
                     />
                 )
             }    

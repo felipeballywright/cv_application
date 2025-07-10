@@ -88,14 +88,9 @@ function EducationRender(){
     }
 
     function handleDelete(id){
-        console.log("ID is", id);
-        console.log("Before", sections);
-
         setSections([ ...sections ].filter(section => 
             section.id !== id
         ))
-
-        console.log("After", sections);
     }
 
     return(
