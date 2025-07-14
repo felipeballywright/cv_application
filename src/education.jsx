@@ -1,18 +1,18 @@
 import { useState } from "react";
 
-function Education({title, school, date, handleSubmit, handleDelete}){
+function Education({title, school, date, handleSubmit, handleDelete, deleteButtonStyle}){
     return(
         <div className="basic-container">
             <h2>{title}</h2>
             <p className="bold-text">{school}</p>
             <p>{date}</p>
             <button onClick={handleSubmit}>Edit</button>
-            <button onClick={handleDelete}>Delete</button>
+            <button onClick={handleDelete} style={deleteButtonStyle}>Delete</button>
         </div>
     )
 }
 
-function EducationForm({title, school, date, onTitleChange, onSchoolChange, onDateChange, handleSubmit, handleDelete}){
+function EducationForm({title, school, date, onTitleChange, onSchoolChange, onDateChange, handleSubmit, handleDelete, deleteButtonStyle}){
     return(
         <form onSubmit={handleSubmit}>
             <label htmlFor="title-input">Title</label>
@@ -25,12 +25,12 @@ function EducationForm({title, school, date, onTitleChange, onSchoolChange, onDa
             <input id="date-input" value={date} onChange={onDateChange}></input>
 
             <button>Submit</button>
-            <button onClick={handleDelete}>Delete</button>
+            <button onClick={handleDelete} style={deleteButtonStyle}>Delete</button>
         </form>
     )
 }
 
-function EducationRender(){
+export function EducationRender(){
     const [sections, setSections] = useState([
         {id: crypto.randomUUID(), title: "", school: "", date: "", isSubmitted: false}
     ]);
@@ -78,19 +78,33 @@ function EducationRender(){
         }))
     }
 
-    function handleAddEducation(){
-        setSections(prev => {
-            return [
-                ...prev, 
-                {id: crypto.randomUUID(), title: "", school: "", date: "", isSubmitted: false}
-            ]
-        })
+    function handleAddSection(){
+        const emptyObj = { id: crypto.randomUUID(), company: "", position: "", respons: "", date: "", isSubmitted: false };
+        
+        if(sections[sections.length - 1].isSubmitted){
+            setSections(prev => {
+                return[
+                    ...prev,
+                    emptyObj
+                ]
+            })
+        } else{
+            alert("Please submit the last section before adding a new one.");
+        }
     }
 
     function handleDelete(id){
         setSections([ ...sections ].filter(section => 
             section.id !== id
         ))
+    }
+
+    function isHidden(){
+        if(sections.length > 1){
+            return "inline"
+        } else{
+            return "none"
+        }
     }
 
     return(
@@ -104,6 +118,7 @@ function EducationRender(){
                         date={section.date}
                         handleSubmit={(e) => {handleSubmit(e, section.id)}}
                         handleDelete={() => {handleDelete(section.id)}}
+                        deleteButtonStyle={{display: isHidden()}}
                     />
                 } else{
                     return <EducationForm 
@@ -116,10 +131,11 @@ function EducationRender(){
                         onDateChange={(e) => {onDateChange(e.target.value, section.id)}}
                         handleSubmit={(e) => {handleSubmit(e, section.id)}}
                         handleDelete={() => {handleDelete(section.id)}}
+                        deleteButtonStyle={{display: isHidden()}}
                     />
                 }
             })}
-            <button onClick={handleAddEducation}>Add Education</button>
+            <button onClick={handleAddSection}>Add Education</button>
         </div>
     )
 }

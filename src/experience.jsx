@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-function Experience({company, position, respons, date, handleSubmit, handleDelete}){
+function Experience({company, position, respons, date, handleSubmit, handleDelete, deleteButtonStyle}){
     return(
         <div className="basic-container">
             <h2>{company}</h2>
@@ -8,12 +8,12 @@ function Experience({company, position, respons, date, handleSubmit, handleDelet
             <p>{respons}</p>
             <p>{date}</p>
             <button onClick={handleSubmit}>Edit</button>
-            <button onClick={handleDelete}>Delete</button>
+            <button onClick={handleDelete} style={deleteButtonStyle}>Delete</button>
         </div>
     )
 }
 
-function ExperienceForm({company, position, respons, date, onCompanyChange, onPositionChange, onResponsChange, onDateChange, handleSubmit, handleDelete, isHidden}){
+function ExperienceForm({company, position, respons, date, onCompanyChange, onPositionChange, onResponsChange, onDateChange, handleSubmit, handleDelete, deleteButtonStyle}){
     return(
         <form onSubmit={handleSubmit}>
             <label htmlFor="company-input">Company</label>
@@ -29,7 +29,7 @@ function ExperienceForm({company, position, respons, date, onCompanyChange, onPo
             <input id="date-input" value={date} onChange={onDateChange}></input>
 
             <button>Submit</button>
-            <button onClick={handleDelete} style={isHidden}>Delete</button>
+            <button onClick={handleDelete} style={deleteButtonStyle}>Delete</button>
         </form>
     )
 }
@@ -112,11 +112,11 @@ export function ExperienceRender(){
         }      
     }
 
-    // WORK ON THIS
-
-    function isHidden(id){
-        if(sections[0].id === id){
-            return none;
+    function isHidden(){
+        if(sections.length > 1){
+            return "inline"
+        } else{
+            return "none"
         }
     }
 
@@ -133,6 +133,7 @@ export function ExperienceRender(){
                         date={section.date}
                         handleSubmit={(e) => {handleSubmit(e, section.id)}}
                         handleDelete={(e) => {handleDelete(e, section.id)}}
+                        deleteButtonStyle={{display: isHidden()}}
                     />
                 )
             } else if(!section.isSubmitted){
@@ -149,7 +150,7 @@ export function ExperienceRender(){
                         onDateChange={(e) => {onDateChange(e.target.value, section.id)}}
                         handleSubmit={(e) => {handleSubmit(e, section.id)}}
                         handleDelete={(e) => {handleDelete(e, section.id)}}
-                        display={() => {return isHidden(section.id)}}
+                        deleteButtonStyle={{display: isHidden()}}
                     />
                 )
             }    
