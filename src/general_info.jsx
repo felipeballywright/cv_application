@@ -21,78 +21,72 @@ export function GeneralInfoForm(){
     const [sections, setSections] = useState({
         id: crypto.randomUUID(), name: "", email: "", phone: "", isSubmitted: false
     })
-    // const [nameInput, setNameInput] = useState('');
-    // const [emailInput, setEmailInput] = useState('');
-    // const [phoneInput, setPhoneInput] = useState('');
-    // const [isSubmitted, setIsSubmitted] = useState(false);
 
     function handleSubmit(){
-        if(!sections.isSubmitted){
-            setSections(prev => prev.map(sections => {
+        if(sections.isSubmitted){
+            setSections(prev => {
                 return{
-                    ...sections,
-                    isSubmitted: true
-                }
-            }))
-        } else if(sections.isSubmitted){
-            setSections(prev => prev.map(sections => {
-                return{
-                    ...sections,
+                    ...prev,
                     isSubmitted: false
                 }
-            }))
+            })
+        } else{
+            setSections(prev => {
+                return{
+                    ...prev,
+                    isSubmitted: true
+                }
+            })
         }
     }
 
-    function handleName(event){     
-        setSections(prev => prev.map(section => {
+    function handleName(event){  
+        setSections(prev => {
             return{
-                ...section,
+                ...prev,
                 name: event.target.value
             }
-        }))
+        })
     }
 
     function handleEmail(event){
-        setSections(prev => prev.map(section => {
+        setSections(prev => {
             return{
-                ...section,
+                ...prev,
                 email: event.target.value
             }
-        }))
+        })
     }
 
     function handlePhone(event){
-        setSections(prev => prev.map(section => {
+        setSections(prev => {
             return{
-                ...section,
+                ...prev,
                 phone: event.target.value
             }
-        }))
+        })
     }
 
-    if(isSubmitted){
+    if(sections.isSubmitted){
+        console.log(sections);
         return(
-            <>
-              <GeneralInfo
+            <GeneralInfo
                 name={sections.name}
-                email={sections.email}
                 phone={sections.phone}
-              />
-              <button onClick={handleSubmit}>Edit</button>
-            </>
+                email={sections.email}
+            />
+        )
+    } else if(!sections.isSubmitted){
+        return(
+            <form onSubmit={handleSubmit}>
+                <label htmlFor="name-input">Name</label>
+                <input onChange={(event) => {handleName(event)}} id="name-input" value={sections.name}></input>
+                <label htmlFor="email-input">Email</label>
+                <input onChange={handleEmail} id="email-input" value={sections.email}></input>
+                <label htmlFor="phone-input">Phone</label>
+                <input onChange={handlePhone} id="phone-input" value={sections.phone}></input>
+                <button>Submit</button>
+            </form>
         )
     }
-
-    return(
-        <form onSubmit={handleSubmit}>
-            <label htmlFor="name-input">Name</label>
-            <input onChange={handleName} id="name-input" value={sections.name}></input>
-            <label htmlFor="email-input">Email</label>
-            <input onChange={handleEmail} id="email-input" value={sections.email}></input>
-            <label htmlFor="phone-input">Phone</label>
-            <input onChange={handlePhone} id="phone-input" value={sections.phone}></input>
-            <button>Submit</button>
-        </form>
-    )
 }
