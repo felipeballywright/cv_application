@@ -15,7 +15,7 @@ function Experience({company, position, respons, date, handleSubmit, handleDelet
 
 function ExperienceForm({company, position, respons, date, onCompanyChange, onPositionChange, onResponsChange, onDateChange, handleSubmit, handleDelete, deleteButtonStyle}){
     return(
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="basic-container">
             <label htmlFor="company-input">Company</label>
             <input id="company-input" value={company} onChange={onCompanyChange}></input>
         

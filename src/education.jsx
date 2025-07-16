@@ -14,7 +14,7 @@ function Education({title, school, date, handleSubmit, handleDelete, deleteButto
 
 function EducationForm({title, school, date, onTitleChange, onSchoolChange, onDateChange, handleSubmit, handleDelete, deleteButtonStyle}){
     return(
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="basic-container">
             <label htmlFor="title-input">Title</label>
             <input id="title-input" value={title} onChange={onTitleChange}></input>
 
@@ -108,7 +108,7 @@ export function EducationRender(){
     }
 
     return(
-        <div>
+        <div className="basic-container">
             {sections.map((section) => {
                 if(section.isSubmitted){
                     return <Education 

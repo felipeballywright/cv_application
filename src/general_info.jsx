@@ -2,7 +2,7 @@ import { useState } from "react"
 
 // You have to add the edit button that set submitted back to false :)
 
-function GeneralInfo({name, email, phone}){
+function GeneralInfo({name, email, phone, handleSubmit}){
     return(
         <div className="basic-container">
             <p className="bold-text">Name</p>
@@ -11,6 +11,7 @@ function GeneralInfo({name, email, phone}){
             <p>{email}</p>
             <p className="bold-text">Phone</p>
             <p>{phone}</p>
+            <button onClick={handleSubmit}>Edit</button>
         </div>
     )
 }
@@ -70,15 +71,18 @@ export function GeneralInfoForm(){
     if(sections.isSubmitted){
         console.log(sections);
         return(
-            <GeneralInfo
-                name={sections.name}
-                phone={sections.phone}
-                email={sections.email}
-            />
+            <>
+                <GeneralInfo
+                    name={sections.name}
+                    phone={sections.phone}
+                    email={sections.email}
+                />
+                {/* <button onClick={handleSubmit}>Edit</button> */}
+            </>
         )
     } else if(!sections.isSubmitted){
         return(
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} className="basic-container">
                 <label htmlFor="name-input">Name</label>
                 <input onChange={(event) => {handleName(event)}} id="name-input" value={sections.name}></input>
                 <label htmlFor="email-input">Email</label>
