@@ -21,19 +21,24 @@ body {
 #root{
   width: 100%;
   height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .basic-container{
   background-color: rgb(29, 41, 55);
   display: flex;
-  flex-direction: column;
-  margin: auto;
-  width: 30%;
-  padding: 2% 5%;
+  flex-direction: column; 
   border-radius: 2rem;
+  min-width: 50%;
+  padding: 2% 5%;
 } 
 
-.basic-container input{
-  margin-bottom: 1rem;
+.basic-form{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 }
 

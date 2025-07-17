@@ -2,7 +2,7 @@ import { useState } from "react"
 
 function Experience({company, position, respons, date, handleSubmit, handleDelete, deleteButtonStyle}){
     return(
-        <div className="basic-container">
+        <div>
             <h2>{company}</h2>
             <p>{position}</p>
             <p>{respons}</p>
@@ -15,7 +15,7 @@ function Experience({company, position, respons, date, handleSubmit, handleDelet
 
 function ExperienceForm({company, position, respons, date, onCompanyChange, onPositionChange, onResponsChange, onDateChange, handleSubmit, handleDelete, deleteButtonStyle}){
     return(
-        <form onSubmit={handleSubmit} className="basic-container">
+        <form onSubmit={handleSubmit} className="basic-form">
             <label htmlFor="company-input">Company</label>
             <input id="company-input" value={company} onChange={onCompanyChange}></input>
         
@@ -121,20 +121,20 @@ export function ExperienceRender(){
     }
 
     return(
-        <div>
+        <div className="basic-container">
             {sections.map(section => {
             if(section.isSubmitted){
                 return(
-                    <Experience 
-                        key={section.id}
-                        company={section.company}
-                        position={section.position}
-                        respons={section.respons}
-                        date={section.date}
-                        handleSubmit={(e) => {handleSubmit(e, section.id)}}
-                        handleDelete={(e) => {handleDelete(e, section.id)}}
-                        deleteButtonStyle={{display: isHidden()}}
-                    />
+                        <Experience 
+                            key={section.id}
+                            company={section.company}
+                            position={section.position}
+                            respons={section.respons}
+                            date={section.date}
+                            handleSubmit={(e) => {handleSubmit(e, section.id)}}
+                            handleDelete={(e) => {handleDelete(e, section.id)}}
+                            deleteButtonStyle={{display: isHidden()}}
+                        />
                 )
             } else if(!section.isSubmitted){
                 return(
@@ -155,7 +155,7 @@ export function ExperienceRender(){
                 )
             }    
         })}
-        <button onClick={handleAddSection}>Add Section</button>
+            <button onClick={handleAddSection}>Add Section</button>
         </div>
     )
 }

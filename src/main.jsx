@@ -10,8 +10,8 @@ import './main.css'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <GeneralInfoForm></GeneralInfoForm>
-    <ExperienceRender></ExperienceRender>
-    <EducationRender></EducationRender>
+    <div id='body-container'>
+      <GeneralInfoForm></GeneralInfoForm>
+    </div>
   </StrictMode>,
 )

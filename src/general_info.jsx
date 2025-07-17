@@ -1,7 +1,5 @@
 import { useState } from "react"
 
-// You have to add the edit button that set submitted back to false :)
-
 function GeneralInfo({name, email, phone, handleSubmit}){
     return(
         <div className="basic-container">
