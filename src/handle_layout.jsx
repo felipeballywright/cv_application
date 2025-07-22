@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { HandleBasicInfo } from "./basic_info";
+import { HandleContactInfo } from "./contact_info";
 
 export function Layout({leftHalf, rightHalf}){
     return(
@@ -15,12 +16,13 @@ export function Layout({leftHalf, rightHalf}){
 }
 
 export function HandleLayout(){
-    const { left, right } = HandleBasicInfo();
+    const { basicInfoLeft, basicInfoRight } = HandleBasicInfo();
+    const { contactInfoLeft, contactInfoRight } = HandleContactInfo();
 
     return(
         <Layout
-            leftHalf={left}
-            rightHalf={right}
+            leftHalf={[basicInfoLeft, contactInfoLeft]}
+            rightHalf={[basicInfoRight, contactInfoRight]}
         />
     )
 }

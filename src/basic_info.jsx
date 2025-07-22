@@ -11,7 +11,7 @@ export function BasicInfoForm({firstName, lastName, proTitle, summary, handleFir
             <input onChange={(event) => {handleproTitle(event)}} id="pro-title-input" value={proTitle}></input>
             <label htmlFor="summary">A summary about yourself:</label>
             <input onChange={(event) => {handleSummary(event)}} id="summary" value={summary}></input>
-            <button onClick={handleSubmit}>Submit</button>
+            {/* <button onClick={handleSubmit}>Submit</button> */}
         </form>
     )
 }
@@ -73,8 +73,9 @@ export function HandleBasicInfo(){
     }
 
     return{
-        left: (
+        basicInfoLeft: (
             <BasicInfoForm
+                key={sections.id}
                 firstName={sections.firstName}
                 lastName={sections.lastName}
                 proTitle={sections.proTitle}
@@ -86,8 +87,9 @@ export function HandleBasicInfo(){
                 handleSubmit={(e) => handleSubmit(e)}
             />
         ),
-        right: (
+        basicInfoRight: (
             <BasicInfo
+                key={sections.id}
                 firstName={sections.firstName}
                 lastName={sections.lastName}
                 proTitle={sections.proTitle}
