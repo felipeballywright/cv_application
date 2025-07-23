@@ -1,13 +1,14 @@
+// THE DELETE FUNCTION IS NOT WORKING!!!
+
 import { useState } from "react";
 
-function Education({university, degree, startDate, endDate, handleDelete, deleteButtonStyle}){
+function Education({university, degree, startDate, endDate }){
     return(
         <div className="basic-container">
                 <p value={university}></p>
                 <p value={degree}></p>
                 <p value={startDate}></p>
                 <p value={endDate}></p>
-            <button onClick={handleDelete} style={deleteButtonStyle}>Delete</button>
         </div>
     )
 }
@@ -108,21 +109,27 @@ export function handleEducationInfo(){
     return{
         leftEducationInfo: (
             <>
-              <EducationForm
-                key={sections.id}
-                university={sections.university}
-                degree={sections.degree}
-                startDate={sections.startDate}
-                endDate={sections.endDate}
-                handleUniversity={(e) => {handleUniversity(e, sections.id)}}
-                handleDegree={(e) => {handleDegree(e, sections.id)}}
-                handleStartDate={(e) => {handleStartDate(e, sections.id)}}
-                handleEndDate={(e) => {handleEndDate(e, sections.id)}}
-                handleDelete={(e) => {handleDelete(e, sections.id)}}
-                deleteButtonStyle={{display: isHidden()}}
-                handleSubmit={(e) => handleSubmit(e)}
-              />
-              <button onClick={handleAddSection}>Add degree</button>
+            {sections.map((section) => {
+                if(sections.length > 3){
+                    return
+                } else{
+                    return <EducationForm
+                        key={section.id}
+                        university={section.university}
+                        degree={section.degree}
+                        startDate={section.startDate}
+                        endDate={section.endDate}
+                        handleUniversity={(e) => {handleUniversity(e, section.id)}}
+                        handleDegree={(e) => {handleDegree(e, section.id)}}
+                        handleStartDate={(e) => {handleStartDate(e, section.id)}}
+                        handleEndDate={(e) => {handleEndDate(e, section.id)}}
+                        handleDelete={(e) => {handleDelete(e, section.id)}}
+                        deleteButtonStyle={{display: isHidden()}}
+                        handleSubmit={(e) => handleSubmit(e)}
+                    />
+                }
+            })}
+              <button onClick={handleAddSection} style={sections.length === 3 ? {display: "none"} : {display: "inline"}}>Add degree</button>
             </>
         ),
         rightEducationInfo: (
@@ -132,8 +139,6 @@ export function handleEducationInfo(){
                 degree={sections.degree}
                 startDate={sections.startDate}
                 endDate={sections.endDate}
-                handleDelete={(e) => {handleDelete(e)}}
-                deleteButtonStyle={{display: isHidden()}}
             />
         )
     }
