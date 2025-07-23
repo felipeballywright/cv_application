@@ -24,14 +24,22 @@ body {
 }
 
 #both-halves{
-
   display: grid;
   grid-template-columns: 1fr 1.5fr;
+}
+
+#left-half{
+  background-color: rgb(26, 26, 26);
+  padding: 2% 5%;
+}
+
+#right-half{
+  background-color: rgb(26, 26, 26);
+  margin: 10%;
 }
 
 .basic-container{
   background-color: rgb(26, 26, 26);
   display: flex;
   flex-direction: column; 
-  padding: 2% 5%;
 } 

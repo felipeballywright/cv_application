@@ -1,27 +1,27 @@
 import { useState } from "react"
 
-function ContactInfoForm({email, phone, location, website, handleEmail, handlePhone, handleLocation, handleWebsite, handleSubmit}){
-    return(
+function ContactInfoForm({ email, phone, location, website, handleEmail, handlePhone, handleLocation, handleWebsite, handleSubmit }) {
+    return (
         <form className="basic-container" onSubmit={handleSubmit}>
             <label htmlFor="email-input">Email:</label>
-            <input onChange={(event) => {handleEmail(event)}} id="email-input" value={email}></input>
-            
+            <input onChange={(event) => { handleEmail(event) }} id="email-input" value={email} placeholder="myemail@mail.com"></input>
+
             <label htmlFor="phone-input">Phone:</label>
-            <input onChange={(event) => {handlePhone(event)}} id="phone-input" value={phone}></input>
+            <input onChange={(event) => { handlePhone(event) }} id="phone-input" value={phone} placeholder="+**********"></input>
 
             <label htmlFor="location-input">Location:</label>
-            <input onChange={(event) => {handleLocation(event)}} id="location-input" value={location}></input>
+            <input onChange={(event) => { handleLocation(event) }} id="location-input" value={location} placeholder="City, Country"></input>
 
             <label htmlFor="website-input">Website:</label>
-            <input onChange={(event) => {handleWebsite(event)}} id="website-input" value={website}></input>
+            <input onChange={(event) => { handleWebsite(event) }} id="website-input" value={website}></input>
 
             {/* <button onClick={handleSubmit}>Submit</button> */}
         </form>
     )
 }
 
-function ContactInfo({email, phone, location, website}){
-    return(
+function ContactInfo({ email, phone, location, website }) {
+    return (
         <div className="basic-container">
             <p>{email}</p>
             <p>{phone}</p>
@@ -31,65 +31,69 @@ function ContactInfo({email, phone, location, website}){
     )
 }
 
-export function HandleContactInfo(){
+export function HandleContactInfo() {
     const [sections, setSections] = useState({
         id: crypto.randomUUID(), email: "", phone: "", location: "", website: ""
     })
 
-    function handleEmail(event){
+    function handleEmail(event) {
         setSections(prev => {
-            return{
+            return {
                 ...prev,
                 email: event.target.value
             }
         })
     }
 
-    function handlePhone(event){
+    function handlePhone(event) {
         setSections(prev => {
-            return{
+            return {
                 ...prev,
                 phone: event.target.value
             }
         })
     }
 
-    function handleLocation(event){
+    function handleLocation(event) {
         setSections(prev => {
-            return{
+            return {
                 ...prev,
                 location: event.target.value
             }
         })
     }
 
-    function handleWebsite(event){
+    function handleWebsite(event) {
         setSections(prev => {
-            return{
+            return {
                 ...prev,
                 website: event.target.value
             }
         })
     }
 
-    function handleSubmit(event){
+    function handleSubmit(event) {
         event.preventDefault();
     }
 
-    return{
+    return {
         contactInfoLeft: (
-            <ContactInfoForm
-                key={sections.id}
-                email={sections.email}
-                phone={sections.phone}
-                location={sections.location}
-                website={sections.website}
-                handleEmail={(e) => handleEmail(e)}
-                handlePhone={(e) => handlePhone(e)}
-                handleLocation={(e) => handleLocation(e)}
-                handleWebsite={(e) => handleWebsite(e)}
-                handleSubmit={(e) => handleSubmit(e)}
-            />
+            <>
+                <h2 className="form-title">Contact Info</h2>
+                <div className="division-line"></div>
+                <ContactInfoForm
+                    key={sections.id}
+                    email={sections.email}
+                    phone={sections.phone}
+                    location={sections.location}
+                    website={sections.website}
+                    handleEmail={(e) => handleEmail(e)}
+                    handlePhone={(e) => handlePhone(e)}
+                    handleLocation={(e) => handleLocation(e)}
+                    handleWebsite={(e) => handleWebsite(e)}
+                    handleSubmit={(e) => handleSubmit(e)}
+                />
+            </>
         ),
         contactInfoRight: (
             <ContactInfo
