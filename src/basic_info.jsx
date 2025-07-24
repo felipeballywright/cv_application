@@ -3,17 +3,26 @@ import { useState } from "react"
 export function BasicInfoForm({ firstName, lastName, proTitle, summary, handleFirstName, handleLastName, handleproTitle, handleSummary, handleSubmit }) {
     return (
         <form className="basic-container" onSubmit={handleSubmit}>
-            <label htmlFor="first-name-input">First Name:</label>
-            <input onChange={(event) => { handleFirstName(event) }} id="first-name-input" value={firstName} placeholder="First Name"></input>
 
-            <label htmlFor="last-name-input">Last Name:</label>
-            <input onChange={(event) => { handleLastName(event) }} id="last-name-input" value={lastName} placeholder="Last Name"></input>
+            <div className="input-group">
+                <label htmlFor="first-name-input">First Name:</label>
+                <input onChange={(event) => { handleFirstName(event) }} id="first-name-input" value={firstName} placeholder="First Name"></input>
+            </div>
 
-            <label htmlFor="pro-title-input">Professional Title:</label>
-            <input onChange={(event) => { handleproTitle(event) }} id="pro-title-input" value={proTitle} placeholder="Professional Title"></input>
+            <div className="input-group">
+                <label htmlFor="last-name-input">Last Name:</label>
+                <input onChange={(event) => { handleLastName(event) }} id="last-name-input" value={lastName} placeholder="Last Name"></input>
+            </div>
 
-            <label htmlFor="summary">A summary about yourself:</label>
-            <input onChange={(event) => { handleSummary(event) }} id="summary" value={summary}></input>
+            <div className="input-group">
+                <label htmlFor="pro-title-input">Professional Title:</label>
+                <input onChange={(event) => { handleproTitle(event) }} id="pro-title-input" value={proTitle} placeholder="Professional Title"></input>
+            </div>
+
+            <div className="input-group">
+                <label htmlFor="summary">A summary about yourself:</label>
+                <input onChange={(event) => { handleSummary(event) }} id="summary" value={summary}></input>
+            </div>
         </form>
     )
 }

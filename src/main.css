@@ -10,12 +10,18 @@ html {
   font-size: 62.5%;
 }
 
+:root {
+  --dark-gray: rgb(26, 26, 26);
+  --light-gray: rgb(41, 41, 41);
+  --accent-color: rgb(100, 108, 255);
+}
+
 body {
   box-sizing: border-box;
   font-size: 1.6rem;
   display: flex;
   justify-content: center;
-  background-color: rgb(41, 41, 41);
+  background-color: var(--light-gray);
 }
 
 #root{
@@ -29,17 +35,39 @@ body {
 }
 
 #left-half{
-  background-color: rgb(26, 26, 26);
+  background-color: var(--dark-gray);
   padding: 2% 5%;
 }
 
 #right-half{
-  background-color: rgb(26, 26, 26);
+  background-color: var(--dark-gray);
   margin: 10%;
 }
 
 .basic-container{
-  background-color: rgb(26, 26, 26);
+  background-color: var(--dark-gray);
   display: flex;
   flex-direction: column; 
 } 
+
+#left-half input:focus,
+#left-half button:hover {
+  outline: none;
+  border-color: var(--accent-color);
+  border-style: solid;
+}
+
+h1 {
+  color: var(--accent-color);
+}
+
+.input-group{
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.input-group{
+  position: absolute;
+
+}
