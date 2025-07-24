@@ -14,17 +14,25 @@ function Education({ university, degree, startDate, endDate }) {
 function EducationForm({ university, degree, startDate, endDate, handleUniversity, handleDegree, handleStartDate, handleEndDate, handleDelete, deleteButtonStyle, handleSubmit }) {
     return (
         <form onSubmit={handleSubmit} className="basic-container">
-            <label htmlFor="university-input">University/Institution</label>
-            <input id="university-input" value={university} onChange={handleUniversity} placeholder="University/Institution"></input>
+            <div className="input-group">
+                <label htmlFor="university-input">University/Institution</label>
+                <input id="university-input" value={university} onChange={handleUniversity} placeholder="University/Institution"></input>
+            </div>
 
-            <label htmlFor="degree-input">Degree:</label>
-            <input id="degree-input" value={degree} onChange={handleDegree} placeholder="Degree"></input>
+            <div className="input-group">
+                <label htmlFor="degree-input">Degree:</label>
+                <input id="degree-input" value={degree} onChange={handleDegree} placeholder="Degree"></input>
+            </div>
 
-            <label htmlFor="start-date-input">Starting year:</label>
-            <input id="education-start-date-input" type="date" value={startDate} onChange={handleStartDate}></input>
+            <div className="input-group">
+                <label htmlFor="start-date-input">Starting year:</label>
+                <input id="education-start-date-input" type="date" value={startDate} onChange={handleStartDate}></input>
+            </div>
 
-            <label htmlFor="end-date-input">Graduating year:</label>
-            <input id="education-end-date-input" type="date" value={endDate} onChange={handleEndDate}></input>
+            <div className="input-group">
+                <label htmlFor="end-date-input">Graduating year:</label>
+                <input id="education-end-date-input" type="date" value={endDate} onChange={handleEndDate}></input>
+            </div>
 
             <button className="basic-button" onClick={handleDelete} style={deleteButtonStyle}>Delete</button>
         </form>

@@ -14,17 +14,26 @@ function Experience({ title, company, startDate, endDate }) {
 function ExperienceForm({ title, company, startDate, endDate, handleTitle, handleCompany, handleStartDate, handleEndDate, handleDelete, deleteButtonStyle, handleSubmit }) {
     return (
         <form onSubmit={handleSubmit} className="basic-container">
-            <label htmlFor="title-input">Title/Position</label>
-            <input id="title-input" value={title} onChange={handleTitle} placeholder="Title/Position"></input>
+            <div className="input-group">
+                <label htmlFor="title-input">Title/Position</label>
+                <input id="title-input" value={title} onChange={handleTitle} placeholder="Title/Position"></input>
+            </div>
 
-            <label htmlFor="company-input">Company:</label>
-            <input id="company-input" value={company} onChange={handleCompany} placeholder="Company"></input>
+            <div className="input-group">
+                <label htmlFor="company-input">Company:</label>
+                <input id="company-input" value={company} onChange={handleCompany} placeholder="Company"></input>
 
-            <label htmlFor="experience-start-date-input">Starting year:</label>
-            <input id="experience-start-date-input" type="date" value={startDate} onChange={handleStartDate}></input>
+            </div>
 
-            <label htmlFor="experience-end-date-input">End year:</label>
-            <input id="experience-end-date-input" type="date" value={endDate} onChange={handleEndDate}></input>
+            <div className="input-group">
+                <label htmlFor="experience-start-date-input">Starting year:</label>
+                <input id="experience-start-date-input" type="date" value={startDate} onChange={handleStartDate}></input>
+            </div>
+
+            <div className="input-group">
+                <label htmlFor="experience-end-date-input">End year:</label>
+                <input id="experience-end-date-input" type="date" value={endDate} onChange={handleEndDate}></input>
+            </div>
 
             <button className="basic-button" onClick={handleDelete} style={deleteButtonStyle}>Delete</button>
         </form>

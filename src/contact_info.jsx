@@ -3,19 +3,25 @@ import { useState } from "react"
 function ContactInfoForm({ email, phone, location, website, handleEmail, handlePhone, handleLocation, handleWebsite, handleSubmit }) {
     return (
         <form className="basic-container" onSubmit={handleSubmit}>
-            <label htmlFor="email-input">Email:</label>
-            <input onChange={(event) => { handleEmail(event) }} id="email-input" value={email} placeholder="myemail@mail.com"></input>
+            <div className="input-group">
+                <label htmlFor="email-input">Email:</label>
+                <input onChange={(event) => { handleEmail(event) }} id="email-input" value={email} placeholder="myemail@mail.com"></input>
+            </div>
 
-            <label htmlFor="phone-input">Phone:</label>
-            <input onChange={(event) => { handlePhone(event) }} id="phone-input" value={phone} placeholder="+**********"></input>
+            <div className="input-group">
+                <label htmlFor="phone-input">Phone:</label>
+                <input onChange={(event) => { handlePhone(event) }} id="phone-input" value={phone} placeholder="+**********"></input>
+            </div>
 
-            <label htmlFor="location-input">Location:</label>
-            <input onChange={(event) => { handleLocation(event) }} id="location-input" value={location} placeholder="City, Country"></input>
+            <div className="input-group">
+                <label htmlFor="location-input">Location:</label>
+                <input onChange={(event) => { handleLocation(event) }} id="location-input" value={location} placeholder="City, Country"></input>
+            </div>
 
-            <label htmlFor="website-input">Website:</label>
-            <input onChange={(event) => { handleWebsite(event) }} id="website-input" value={website}></input>
-
-            {/* <button onClick={handleSubmit}>Submit</button> */}
+            <div className="input-group">
+                <label htmlFor="website-input">Website:</label>
+                <input onChange={(event) => { handleWebsite(event) }} id="website-input" value={website}></input>
+            </div>
         </form>
     )
 }

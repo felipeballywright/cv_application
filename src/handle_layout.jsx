@@ -31,19 +31,23 @@ export function HandleLayout() {
         <Layout
             leftHalf={
                 <>
-                    <div key="basicInfoLeft">{basicInfoLeft}</div>
-                    <div key="contactInfoLeft">{contactInfoLeft}</div>
-                    <div key="leftEducationInfo">{leftEducationInfo}</div>
-                    <div key="leftExperienceInfo">{leftExperienceInfo}</div>
+                    <div className="section-container" key="basicInfoLeft">{basicInfoLeft}</div>
+                    <div className="section-container" key="contactInfoLeft">{contactInfoLeft}</div>
+                    <div className="section-container" key="leftEducationInfo">{leftEducationInfo}</div>
+                    <div className="section-container" key="leftExperienceInfo">{leftExperienceInfo}</div>
                 </>
             }
             rightHalf={
-                <>
-                    <div key="basicInfoRight">{basicInfoRight}</div>
-                    <div key="contactInfoRight">{contactInfoRight}</div>
-                    <div key="rightEducationInfo">{rightEducationInfo}</div>
-                    <div key="rightExperienceInfo">{rightExperienceInfo}</div>
-                </>
+                <div id="cv">
+                    <div id="cv-top-container">
+                        <div key="basicInfoRight">{basicInfoRight}</div>
+                        <div key="contactInfoRight">{contactInfoRight}</div>
+                    </div>
+                    <div id="cv-bottom-container">
+                        <div key="rightEducationInfo">{rightEducationInfo}</div>
+                        <div key="rightExperienceInfo">{rightExperienceInfo}</div>
+                    </div>
+                </div>
             }
         />
     );

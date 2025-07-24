@@ -22,6 +22,7 @@ body {
   display: flex;
   justify-content: center;
   background-color: var(--light-gray);
+  overflow: hidden;
 }
 
 #root{
@@ -31,17 +32,33 @@ body {
 
 #both-halves{
   display: grid;
-  grid-template-columns: 1fr 1.5fr;
+  grid-template-columns: 1fr 2fr;
+  /* height: 100%; */
 }
 
 #left-half{
   background-color: var(--dark-gray);
-  padding: 2% 5%;
+  padding: 2% 3.5%;
+  height: 100vh;
+  overflow-y: scroll;
 }
 
 #right-half{
-  background-color: var(--dark-gray);
-  margin: 10%;
+  height: 100vh;
+  background-color: var(--light-gray);
+  padding: 5%;
+}
+
+/* LEFT SCREEN (FORM) */
+
+.section-container{
+  margin-top: 2rem;
+}
+
+.division-line{
+  width: 100%;
+  border: 1px solid gray;
+  margin: 1rem auto;
 }
 
 .basic-container{
@@ -49,6 +66,12 @@ body {
   display: flex;
   flex-direction: column; 
 } 
+
+#left-half button{
+  border: 1.5px solid gray;
+  width: 100%;
+  padding: 1.2rem 0;
+}
 
 #left-half input:focus,
 #left-half button:hover {
@@ -65,9 +88,38 @@ h1 {
   display: flex;
   flex-direction: column;
   position: relative;
+  padding: 2rem 0;
 }
 
-.input-group{
+.input-group label{
   position: absolute;
+  z-index: 1;
+  top: 0.8rem;
+  left: 0.8rem;
+  background-color: var(--dark-gray);
+  padding: 0 0.5rem;
+}
 
+.input-group input{
+  font-size: 1.7rem;
+  padding: 2rem 1.3rem;
+  background-color: var(--dark-gray);
+  border-radius: 0.5rem;
+  border: 0.5px solid gray;
+}
+
+/* RIGHT SCREEN (CV) */
+
+#cv{
+  background-color: var(--dark-gray);
+  max-width: 100%;
+  aspect-ratio: 1 / 1.5
+}
+
+#cv-top-container{
+  background-color: blue;
+}
+
+#cv-bottom-container{
+  background-color: aquamarine;
 }
