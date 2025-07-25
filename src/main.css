@@ -22,52 +22,57 @@ body {
   display: flex;
   justify-content: center;
   background-color: var(--light-gray);
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
-#root{
-  width: 100%;
+#root {
   height: 100vh;
+  width: 100vw;
 }
 
-#both-halves{
+#both-halves {
+  height: 100vh;
   display: grid;
   grid-template-columns: 1fr 2fr;
-  /* height: 100%; */
 }
 
-#left-half{
+#left-half {
   background-color: var(--dark-gray);
   padding: 2% 3.5%;
   height: 100vh;
   overflow-y: scroll;
 }
 
-#right-half{
-  height: 100vh;
+#right-half {
   background-color: var(--light-gray);
+  /* background-color: red; */
   padding: 5%;
+  display: flex;
+  justify-content: center;
+  max-height: 100vh;
+  overflow: auto;
 }
 
 /* LEFT SCREEN (FORM) */
 
-.section-container{
+.section-container {
   margin-top: 2rem;
 }
 
-.division-line{
+.division-line {
   width: 100%;
   border: 1px solid gray;
   margin: 1rem auto;
 }
 
-.basic-container{
-  background-color: var(--dark-gray);
+.basic-container {
+  /* background-color: var(--dark-gray); */
   display: flex;
-  flex-direction: column; 
-} 
+  flex-direction: column;
+  width: 100%;
+}
 
-#left-half button{
+#left-half button {
   border: 1.5px solid gray;
   width: 100%;
   padding: 1.2rem 0;
@@ -82,16 +87,17 @@ body {
 
 h1 {
   color: var(--accent-color);
+  width: 100%;
 }
 
-.input-group{
+.input-group {
   display: flex;
   flex-direction: column;
   position: relative;
   padding: 2rem 0;
 }
 
-.input-group label{
+.input-group label {
   position: absolute;
   z-index: 1;
   top: 0.8rem;
@@ -100,7 +106,7 @@ h1 {
   padding: 0 0.5rem;
 }
 
-.input-group input{
+.input-group input {
   font-size: 1.7rem;
   padding: 2rem 1.3rem;
   background-color: var(--dark-gray);
@@ -110,16 +116,26 @@ h1 {
 
 /* RIGHT SCREEN (CV) */
 
-#cv{
+#cv {
   background-color: var(--dark-gray);
-  max-width: 100%;
-  aspect-ratio: 1 / 1.5
+  height: 862.5px;
+  padding: 15px;
+  width: 600px;
+  display: grid;
+  grid-template-rows: 1fr 3fr;
 }
 
-#cv-top-container{
-  background-color: blue;
+#cv-top-container {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background-color: rgb(0, 0, 49);
 }
 
-#cv-bottom-container{
-  background-color: aquamarine;
+#cv-bottom-container {
+  background: rgb(0, 32, 0);
+  width: 100%;
+  display: flex;
+  justify-content: left;
+  flex-direction: column;
 }

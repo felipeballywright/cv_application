@@ -3,10 +3,10 @@ import { useState } from "react";
 function Experience({ title, company, startDate, endDate }) {
     return (
         <div className="basic-container">
-            <p value={title}></p>
-            <p value={company}></p>
-            <p value={startDate}></p>
-            <p value={endDate}></p>
+            <p>{title}</p>
+            <p>{company}</p>
+            <p>{startDate}</p>
+            <p>{endDate}</p>
         </div>
     )
 }
@@ -142,13 +142,17 @@ export function handleExperienceInfo() {
             </>
         ),
         rightExperienceInfo: (
-            <Experience
-                key={sections.id}
-                title={sections.title}
-                company={sections.company}
-                startDate={sections.startDate}
-                endDate={sections.endDate}
-            />
+            <>
+                {sections.map(section => (
+                    <Experience
+                        key={section.id}
+                        title={section.title}
+                        company={section.company}
+                        startDate={section.startDate}
+                        endDate={section.endDate}
+                    />
+                ))}
+            </>
         )
     }
 }

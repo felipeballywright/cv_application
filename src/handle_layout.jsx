@@ -27,6 +27,8 @@ export function HandleLayout() {
     const { leftEducationInfo, rightEducationInfo } = handleEducationInfo();
     const { leftExperienceInfo, rightExperienceInfo } = handleExperienceInfo();
 
+    console.log(leftEducationInfo, rightEducationInfo, leftExperienceInfo, rightExperienceInfo);
+
     return (
         <Layout
             leftHalf={

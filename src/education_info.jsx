@@ -3,10 +3,12 @@ import { useState } from "react";
 function Education({ university, degree, startDate, endDate }) {
     return (
         <div className="basic-container">
-            <p value={university}></p>
-            <p value={degree}></p>
-            <p value={startDate}></p>
-            <p value={endDate}></p>
+            <h2>{degree}</h2>
+            <p>{university}</p>
+            <div className="both-dates">
+                <p>{startDate}</p>
+                <p>{endDate}</p>
+            </div>
         </div>
     )
 }
@@ -141,13 +143,17 @@ export function handleEducationInfo() {
             </>
         ),
         rightEducationInfo: (
-            <Education
-                key={sections.id}
-                university={sections.university}
-                degree={sections.degree}
-                startDate={sections.startDate}
-                endDate={sections.endDate}
-            />
+            <>
+                {sections.map(section => (
+                    <Education
+                        key={section.id}
+                        university={section.university}
+                        degree={section.degree}
+                        startDate={section.startDate}
+                        endDate={section.endDate}
+                    />
+                ))}
+            </>
         )
     }
 }
