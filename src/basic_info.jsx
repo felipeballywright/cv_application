@@ -29,10 +29,9 @@ export function BasicInfoForm({ firstName, lastName, proTitle, summary, handleFi
 
 export function BasicInfo({ firstName, lastName, proTitle, summary }) {
     return (
-        <div className="basic-container">
-            <p>{firstName}</p>
-            <p>{lastName}</p>
-            <p>{proTitle}</p>
+        <div className="cv-basic-container">
+            <h2>{firstName} {lastName}</h2>
+            <h4>{proTitle}</h4>
             <p>{summary}</p>
         </div>
     )

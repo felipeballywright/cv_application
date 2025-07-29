@@ -28,11 +28,23 @@ function ContactInfoForm({ email, phone, location, website, handleEmail, handleP
 
 function ContactInfo({ email, phone, location, website }) {
     return (
-        <div className="basic-container">
-            <p>{email}</p>
-            <p>{phone}</p>
-            <p>{location}</p>
-            <p>{website}</p>
+        <div className="cv-basic-container">
+            <div className="cv-contact-container">
+                <span className="material-icons">email</span>
+                <p className="small-text">{email}</p>
+            </div>
+            <div className="cv-contact-container">
+                <span className="material-icons">phone</span>
+                <p className="small-text">{phone}</p>
+            </div>
+            <div className="cv-contact-container">
+                <span className="material-icons">location_on</span>
+                <p className="small-text">{location}</p>
+            </div>
+            <div className="cv-contact-container">
+                <span className="material-icons">link</span>
+                <a className="small-text" href={website}>{website}</a>
+            </div>
         </div>
     )
 }

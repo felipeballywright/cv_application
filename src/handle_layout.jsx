@@ -27,7 +27,9 @@ export function HandleLayout() {
     const { leftEducationInfo, rightEducationInfo } = handleEducationInfo();
     const { leftExperienceInfo, rightExperienceInfo } = handleExperienceInfo();
 
-    console.log(leftEducationInfo, rightEducationInfo, leftExperienceInfo, rightExperienceInfo);
+    function formatDateLocal(inputDate){
+        const formatted = new Date(inputDate).toLocaleDateString();
+    }
 
     return (
         <Layout
@@ -42,11 +44,15 @@ export function HandleLayout() {
             rightHalf={
                 <div id="cv">
                     <div id="cv-top-container">
-                        <div key="basicInfoRight">{basicInfoRight}</div>
-                        <div key="contactInfoRight">{contactInfoRight}</div>
+                        {basicInfoRight}
+                        {contactInfoRight}
                     </div>
                     <div id="cv-bottom-container">
+                        <h3>Education Background</h3>
+                        <div className="cv-division-line"></div>
                         <div key="rightEducationInfo">{rightEducationInfo}</div>
+                        <h3>Work Experience</h3>
+                        <div className="cv-division-line"></div>
                         <div key="rightExperienceInfo">{rightExperienceInfo}</div>
                     </div>
                 </div>

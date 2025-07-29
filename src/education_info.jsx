@@ -2,13 +2,10 @@ import { useState } from "react";
 
 function Education({ university, degree, startDate, endDate }) {
     return (
-        <div className="basic-container">
-            <h2>{degree}</h2>
+        <div className="cv-basic-container">
+            <h4>{degree}</h4>
             <p>{university}</p>
-            <div className="both-dates">
-                <p>{startDate}</p>
-                <p>{endDate}</p>
-            </div>
+            <p>{startDate} {endDate}</p>
         </div>
     )
 }

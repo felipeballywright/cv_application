@@ -2,11 +2,10 @@ import { useState } from "react";
 
 function Experience({ title, company, startDate, endDate }) {
     return (
-        <div className="basic-container">
-            <p>{title}</p>
+        <div className="cv-basic-container">
+            <h4>{title}</h4>
             <p>{company}</p>
-            <p>{startDate}</p>
-            <p>{endDate}</p>
+            <p>{startDate} {endDate}</p>
         </div>
     )
 }
