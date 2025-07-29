@@ -5,7 +5,7 @@ function Experience({ title, company, startDate, endDate }) {
         <div className="cv-basic-container">
             <h4>{title}</h4>
             <p>{company}</p>
-            <p>{startDate} {endDate}</p>
+            <p>{startDate} - {endDate}</p>
         </div>
     )
 }
@@ -112,6 +112,14 @@ export function handleExperienceInfo() {
         }
     }
 
+    function formatStartDateLocal(inputDate) {
+        return new Date(inputDate).toLocaleDateString();
+    }
+
+    function formatEndDateLocal(inputDate) {
+        return new Date(inputDate).toLocaleDateString();
+    }
+
     return {
         leftExperienceInfo: (
             <>
@@ -147,8 +155,8 @@ export function handleExperienceInfo() {
                         key={section.id}
                         title={section.title}
                         company={section.company}
-                        startDate={section.startDate}
-                        endDate={section.endDate}
+                        startDate={formatStartDateLocal(section.startDate)}
+                        endDate={formatEndDateLocal(section.endDate)}
                     />
                 ))}
             </>

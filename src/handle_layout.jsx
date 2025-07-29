@@ -27,7 +27,7 @@ export function HandleLayout() {
     const { leftEducationInfo, rightEducationInfo } = handleEducationInfo();
     const { leftExperienceInfo, rightExperienceInfo } = handleExperienceInfo();
 
-    function formatDateLocal(inputDate){
+    function formatDateLocal(inputDate) {
         const formatted = new Date(inputDate).toLocaleDateString();
     }
 

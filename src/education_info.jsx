@@ -5,7 +5,7 @@ function Education({ university, degree, startDate, endDate }) {
         <div className="cv-basic-container">
             <h4>{degree}</h4>
             <p>{university}</p>
-            <p>{startDate} {endDate}</p>
+            <p>{startDate} - {endDate}</p>
         </div>
     )
 }
@@ -111,6 +111,14 @@ export function handleEducationInfo() {
         }
     }
 
+    function formatStartDateLocal(inputDate) {
+        return new Date(inputDate).toLocaleDateString();
+    }
+
+    function formatEndDateLocal(inputDate) {
+        return new Date(inputDate).toLocaleDateString();
+    }
+
     return {
         leftEducationInfo: (
             <>
@@ -146,8 +154,8 @@ export function handleEducationInfo() {
                         key={section.id}
                         university={section.university}
                         degree={section.degree}
-                        startDate={section.startDate}
-                        endDate={section.endDate}
+                        startDate={formatStartDateLocal(section.startDate)}
+                        endDate={formatEndDateLocal(section.endDate)}
                     />
                 ))}
             </>
